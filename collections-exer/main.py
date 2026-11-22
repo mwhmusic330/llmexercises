@@ -14,7 +14,7 @@ from collections import Counter, defaultdict
 data_a = ["Hello World", "Is this the life?", "What is this thing?"]
 data_b = ["Goodbye Earthling", "That is all for now", "The ball is red"]
 
-stopwords_list = ['the', 'is', 'at']
+stopwords_list = ['the', 'like', 'is', 'at']
 
 def clean_text(texts):
     cleaned_tokens = []
@@ -42,7 +42,10 @@ def main():
     counter_a = Counter(tokens_a)
     counter_b = Counter(tokens_b)
 
+    combined_counter = counter_a + counter_b
     print(dict(counter_a))
+    print(dict(counter_b))
+    print(dict(combined_counter))
 
 
 if __name__ == "__main__":
