@@ -12,7 +12,7 @@ from collections import Counter, defaultdict
 
 
 data_a = ["Hello World", "Is this the life?", "What is this thing?"]
-data_b = ["Goodbye Earthling", "Thart is all for now"]
+data_b = ["Goodbye Earthling", "That is all for now", "The ball is red"]
 
 stopwords_list = ['the', 'is', 'at']
 
@@ -28,15 +28,21 @@ def clean_text(texts):
         potential_words = lowered_str.split()
         print(potential_words)
         
-        cleaned_tokens.extend([word for word in potential_words])
+        cleaned_tokens.extend([word.strip("?/!,;:'\"()")for word in potential_words])
 
-    print(cleaned_tokens)
+    return cleaned_tokens
 
 
 
 
 def main():
-    test = clean_text(data_a)
+    tokens_a = clean_text(data_a)
+    tokens_b = clean_text(data_b)
+
+    counter_a = Counter(tokens_a)
+    counter_b = Counter(tokens_b)
+
+    print(dict(counter_a))
 
 
 if __name__ == "__main__":
